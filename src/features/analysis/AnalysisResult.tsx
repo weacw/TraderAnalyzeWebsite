@@ -179,6 +179,10 @@ export const AnalysisResult: React.FC<AnalysisResultProps> = ({ result, ticker, 
                             <span className="text-white">{result.tradeManagement.entry}</span>
                         </div>
                         <div>
+                            <span className="text-slate-500 mr-2">{t('analysis.target')}:</span>
+                            <span className="text-emerald-400">{result.tradeManagement.target}</span>
+                        </div>
+                        <div>
                             <span className="text-slate-500 mr-2">{t('analysis.stop')}:</span>
                             <span className="text-rose-400">{result.tradeManagement.stop}</span>
                         </div>

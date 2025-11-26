@@ -68,7 +68,8 @@
         "save": "保存设置",
         "saved": "已保存！",
         "loading_models": "正在加载模型...",
-        "no_models": "暂无可用模型"
+        "no_models": "暂无可用模型",
+        "account_balance": "账户资金"
     },
     "history": {
         "title": "分析历史",

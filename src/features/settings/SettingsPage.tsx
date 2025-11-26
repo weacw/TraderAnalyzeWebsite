@@ -8,6 +8,7 @@ export const SettingsPage: React.FC = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
     const [apiKey, setApiKey] = useState('');
+    const [accountBalance, setAccountBalance] = useState('700');
     const [provider, setProvider] = useState<'openai' | 'gemini' | 'doubao'>('openai');
     const [saved, setSaved] = useState(false);
     const [isTesting, setIsTesting] = useState(false);
@@ -16,18 +17,20 @@ export const SettingsPage: React.FC = () => {
     const [selectedModel, setSelectedModel] = useState('');
     const [isLoadingModels, setIsLoadingModels] = useState(false);
 
-    
+
 
     useEffect(() => {
         const storedApiKey = localStorage.getItem('llm_api_key') || '';
+        const storedBalance = localStorage.getItem('llm_account_balance') || '700';
         const storedProvider = (localStorage.getItem('llm_provider') as 'openai' | 'gemini' | 'doubao') || 'openai';
         const storedModel = localStorage.getItem('llm_model') || '';
 
         setApiKey(storedApiKey);
+        setAccountBalance(storedBalance);
         setProvider(storedProvider);
         setSelectedModel(storedModel);
 
-        
+
 
         if (storedApiKey) {
             fetchModels(storedProvider, storedApiKey);
@@ -71,6 +74,7 @@ export const SettingsPage: React.FC = () => {
 
     const handleSave = () => {
         localStorage.setItem('llm_api_key', apiKey);
+        localStorage.setItem('llm_account_balance', accountBalance);
         localStorage.setItem('llm_provider', provider);
         localStorage.setItem('llm_model', selectedModel);
         setSaved(true);
@@ -101,7 +105,7 @@ export const SettingsPage: React.FC = () => {
         }
     };
 
-    
+
 
     return (
         <div className="animate-fade-in space-y-6">
@@ -142,6 +146,19 @@ export const SettingsPage: React.FC = () => {
                             onChange={(e) => setApiKey(e.target.value)}
                             className="input-field"
                             placeholder={t('settings.api_key_placeholder')}
+                        />
+                    </div>
+
+                    <div>
+                        <label className="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-1.5">
+                            {t('settings.account_balance')} ($)
+                        </label>
+                        <input
+                            type="number"
+                            value={accountBalance}
+                            onChange={(e) => setAccountBalance(e.target.value)}
+                            className="input-field"
+                            placeholder="700"
                         />
                     </div>
 
@@ -193,7 +210,7 @@ export const SettingsPage: React.FC = () => {
                 </div>
             </div>
 
-            
+
         </div>
     );
 };

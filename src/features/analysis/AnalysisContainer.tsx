@@ -40,7 +40,8 @@ export const AnalysisContainer: React.FC = () => {
 
         try {
             const provider = LLMServiceFactory.getProvider(request.provider);
-            const analysisResult = await provider.analyze(request);
+            const accountBalance = localStorage.getItem('llm_account_balance') || '700';
+            const analysisResult = await provider.analyze({ ...request, accountBalance });
             setResult(analysisResult);
             setStage('analysis');
             HistoryService.save(request, analysisResult);

@@ -12,6 +12,7 @@ export interface AnalysisRequest {
     provider: 'openai' | 'gemini' | 'doubao';
     language: string;
     model?: string;
+    accountBalance?: string;
 }
 
 export interface AnalysisResult {

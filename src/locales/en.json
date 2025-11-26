@@ -68,7 +68,8 @@
         "save": "Save Settings",
         "saved": "Saved!",
         "loading_models": "Loading models...",
-        "no_models": "No models available"
+        "no_models": "No models available",
+        "account_balance": "Account Balance"
     },
     "history": {
         "title": "Analysis History",

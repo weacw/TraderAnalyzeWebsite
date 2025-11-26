@@ -102,6 +102,7 @@ export class GeminiService implements LLMProvider {
             ['技术指标 (RSI / MACD)', `${request.rsi || '-'} / ${request.macd || '-'}`],
             ['IV 排名', request.ivRank || '-'],
             ['关键点位 (支撑/阻力)', `${request.support || '-'} / ${request.resistance || '-'}`],
+            ['账户资金总数', `$${request.accountBalance || '700'}`],
             [timestampLabel, new Date().toISOString()]
         ] : [
             ['Analysis Type', request.analysisType === 'underlying' ? 'Underlying Stock' : 'Options'],
@@ -110,6 +111,7 @@ export class GeminiService implements LLMProvider {
             ['Indicators (RSI / MACD)', `${request.rsi || '-'} / ${request.macd || '-'}`],
             ['IV Rank', request.ivRank || '-'],
             ['Key Levels (Support/Resistance)', `${request.support || '-'} / ${request.resistance || '-'}`],
+            ['Account Balance', `$${request.accountBalance || '700'}`],
             [timestampLabel, new Date().toISOString()]
         ];
 
